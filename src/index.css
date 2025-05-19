@@ -103,5 +103,5 @@
 
 /* Animation utility classes */
 .animate-enter {
-  @apply animate-enter;
+  @apply animate-fade-in animate-scale-in;
 }
