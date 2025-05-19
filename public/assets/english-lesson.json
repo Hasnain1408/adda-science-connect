@@ -1,0 +1,54 @@
+
+{
+  "title": "Newton's Laws of Motion",
+  "introduction": "Sir Isaac Newton's three laws of motion describe the relationship between a body and the forces acting upon it, and its motion in response to those forces.",
+  "sections": [
+    {
+      "title": "First Law (Law of Inertia)",
+      "content": "An object at rest stays at rest, and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.",
+      "example": "A book lying on a table remains at rest until a force (like your hand) moves it."
+    },
+    {
+      "title": "Second Law (F=ma)",
+      "content": "The acceleration of an object depends on the mass of the object and the amount of force applied.",
+      "example": "Pushing a shopping cart requires more force if it's filled with groceries compared to when it's empty."
+    },
+    {
+      "title": "Third Law (Action-Reaction)",
+      "content": "For every action, there is an equal and opposite reaction.",
+      "example": "When a bird flies, it pushes air downward (action) and the air pushes the bird upward (reaction)."
+    }
+  ],
+  "quizQuestions": [
+    {
+      "question": "What happens to an object in motion if no external forces act on it?",
+      "options": [
+        "It eventually stops",
+        "It continues with the same speed and direction",
+        "It accelerates",
+        "It changes direction"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Newton's Second Law is represented by which equation?",
+      "options": [
+        "E = mc²",
+        "F = ma",
+        "a = F/m",
+        "Both B and C are correct"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "question": "When you push against a wall, why doesn't it move?",
+      "options": [
+        "The wall is too heavy",
+        "The wall exerts an equal and opposite force back on you",
+        "The wall has no force",
+        "The wall has infinite mass"
+      ],
+      "correctAnswer": 1
+    }
+  ]
+}
