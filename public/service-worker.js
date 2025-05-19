@@ -7,11 +7,25 @@ const urlsToCache = [
   '/assets/english-lesson.json'
 ];
 
+// Voice-related assets that should be cached
+const voiceAssets = [
+  // We would list voice model files here if we had them
+  // '/assets/voice/bn-model.json',
+  // '/assets/voice/en-model.json'
+];
+
+// Combine all assets to cache
+const allAssetsToCache = [...urlsToCache, ...voiceAssets];
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        return cache.addAll(urlsToCache);
+        console.log('Opened cache');
+        return cache.addAll(allAssetsToCache);
+      })
+      .catch(error => {
+        console.error('Failed to cache assets:', error);
       })
   );
 });
@@ -55,4 +69,17 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
+});
+
+// Add message handling for voice-related communication
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'VOICE_CACHE_REQUEST') {
+    // This would handle specific voice model caching requests
+    event.waitUntil(
+      caches.open(CACHE_NAME)
+        .then((cache) => {
+          return cache.addAll(voiceAssets);
+        })
+    );
+  }
 });

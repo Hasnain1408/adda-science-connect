@@ -10,6 +10,7 @@ import Lessons from "./pages/Lessons";
 import Simulations from "./pages/Simulations";
 import Quiz from "./pages/Quiz";
 import NotFound from "./pages/NotFound";
+import VoiceInterface from "./components/VoiceInterface";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/quiz" element={<Quiz />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <VoiceInterface />
         </BrowserRouter>
       </TooltipProvider>
     </AppProvider>
