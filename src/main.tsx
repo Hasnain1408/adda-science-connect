@@ -4,14 +4,16 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
-// Find root element
-const rootElement = document.getElementById("root");
-if (!rootElement) throw new Error("Failed to find the root element");
+// Create a single root element
+const container = document.getElementById('root')
+if (!container) throw new Error('Root element not found')
 
-// Create root and render app
-const root = createRoot(rootElement);
+// Create a stable root
+const root = createRoot(container)
+
+// Render with StrictMode for development best practices
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-);
+)
