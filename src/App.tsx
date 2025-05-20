@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,23 +15,18 @@ import VoiceInterface from "./components/VoiceInterface";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 
-function App() {
-  // Create a stable reference to the QueryClient that persists across renders
-  const queryClientRef = useRef<QueryClient | null>(null);
-  
-  // Initialize QueryClient only once
-  if (!queryClientRef.current) {
-    queryClientRef.current = new QueryClient({
-      defaultOptions: {
-        queries: {
-          refetchOnWindowFocus: false,
-        },
-      },
-    });
-  }
+// Create a QueryClient instance outside of the component
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
+function App() {
   return (
-    <QueryClientProvider client={queryClientRef.current}>
+    <QueryClientProvider client={queryClient}>
       <AppProvider>
         <TooltipProvider>
           <Toaster />
