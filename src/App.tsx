@@ -25,8 +25,9 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => (
-  <React.StrictMode>
+// Define App component as a function component, not an arrow function
+function App() {
+  return (
     <QueryClientProvider client={queryClient}>
       <AppProvider>
         <TooltipProvider>
@@ -47,7 +48,7 @@ const App = () => (
         </TooltipProvider>
       </AppProvider>
     </QueryClientProvider>
-  </React.StrictMode>
-);
+  );
+}
 
 export default App;
