@@ -15,7 +15,7 @@ import VoiceInterface from "./components/VoiceInterface";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 
-// Create a single QueryClient instance outside the component
+// Create a new QueryClient instance
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
