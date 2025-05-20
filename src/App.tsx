@@ -15,17 +15,9 @@ import VoiceInterface from "./components/VoiceInterface";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 
-// Create a client
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      refetchOnWindowFocus: false
-    },
-  },
-});
+// Create a client with simpler configuration
+const queryClient = new QueryClient();
 
-// Define App component as a function component, not an arrow function
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
