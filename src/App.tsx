@@ -11,6 +11,8 @@ import Simulations from "./pages/Simulations";
 import Quiz from "./pages/Quiz";
 import NotFound from "./pages/NotFound";
 import VoiceInterface from "./components/VoiceInterface";
+import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ const App = () => (
             <Route path="/lessons" element={<Lessons />} />
             <Route path="/simulations" element={<Simulations />} />
             <Route path="/quiz" element={<Quiz />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <VoiceInterface />

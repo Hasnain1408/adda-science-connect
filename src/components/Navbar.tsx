@@ -1,13 +1,14 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { GlobeIcon } from 'lucide-react';
+import { GlobeIcon, User } from 'lucide-react';
 import { useAppContext } from '@/context/AppContext';
 
 export default function Navbar() {
-  const { language, setLanguage, offline } = useAppContext();
+  const { language, setLanguage, offline, user } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -64,15 +65,38 @@ export default function Navbar() {
             <Link to="/quiz" className="hover:text-accent-foreground transition-colors">
               {language === 'en' ? 'Quizzes' : 'কুইজ'}
             </Link>
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex items-center gap-1"
-              onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-            >
-              <GlobeIcon className="h-4 w-4" />
-              {language === 'en' ? 'বাংলা' : 'English'}
-            </Button>
+            
+            <div className="flex items-center gap-2">
+              {user ? (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-1"
+                  onClick={() => navigate('/profile')}
+                >
+                  <User className="h-4 w-4" />
+                  {language === 'en' ? 'Profile' : 'প্রোফাইল'}
+                </Button>
+              ) : (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => navigate('/auth')}
+                >
+                  {language === 'en' ? 'Login' : 'লগইন'}
+                </Button>
+              )}
+              
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-1"
+                onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
+              >
+                <GlobeIcon className="h-4 w-4" />
+                {language === 'en' ? 'বাংলা' : 'English'}
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -110,6 +134,25 @@ export default function Navbar() {
             >
               {language === 'en' ? 'Quizzes' : 'কুইজ'}
             </Link>
+            
+            {user ? (
+              <Link
+                to="/profile"
+                className="block hover:bg-primary-foreground hover:text-primary px-3 py-2 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {language === 'en' ? 'Profile' : 'প্রোফাইল'}
+              </Link>
+            ) : (
+              <Link
+                to="/auth"
+                className="block hover:bg-primary-foreground hover:text-primary px-3 py-2 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {language === 'en' ? 'Login' : 'লগইন'}
+              </Link>
+            )}
+            
             <Button
               variant="outline"
               size="sm"

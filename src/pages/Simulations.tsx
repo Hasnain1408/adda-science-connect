@@ -3,7 +3,11 @@ import { useEffect } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import PendulumSimulation from '@/components/PendulumSimulation';
+import ChemistrySimulation from '@/components/ChemistrySimulation';
+import BiologySimulation from '@/components/BiologySimulation';
+import MathSimulation from '@/components/MathSimulation';
 
 const Simulations = () => {
   const { language } = useAppContext();
@@ -30,8 +34,41 @@ const Simulations = () => {
           </p>
         </header>
         
-        <div className="max-w-4xl mx-auto">
-          <PendulumSimulation />
+        <div className="max-w-5xl mx-auto">
+          <Tabs defaultValue="physics" className="w-full">
+            <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full">
+              <TabsTrigger value="physics">
+                {language === 'en' ? 'Physics' : 'পদার্থবিদ্যা'}
+              </TabsTrigger>
+              <TabsTrigger value="chemistry">
+                {language === 'en' ? 'Chemistry' : 'রসায়ন'}
+              </TabsTrigger>
+              <TabsTrigger value="biology">
+                {language === 'en' ? 'Biology' : 'জীববিদ্যা'}
+              </TabsTrigger>
+              <TabsTrigger value="math">
+                {language === 'en' ? 'Mathematics' : 'গণিত'}
+              </TabsTrigger>
+            </TabsList>
+            
+            <div className="mt-6">
+              <TabsContent value="physics">
+                <PendulumSimulation />
+              </TabsContent>
+              
+              <TabsContent value="chemistry">
+                <ChemistrySimulation />
+              </TabsContent>
+              
+              <TabsContent value="biology">
+                <BiologySimulation />
+              </TabsContent>
+              
+              <TabsContent value="math">
+                <MathSimulation />
+              </TabsContent>
+            </div>
+          </Tabs>
         </div>
       </main>
       <Footer />
