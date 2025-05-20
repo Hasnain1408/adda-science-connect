@@ -15,10 +15,16 @@ import VoiceInterface from "./components/VoiceInterface";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 
-// Create a client with simpler configuration
-const queryClient = new QueryClient();
-
 function App() {
+  // Create client inside component function
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
       <AppProvider>
